@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Brian Muller"]
   spec.email         = ["bamuller@gmail.com"]
   spec.summary       = %q{Generate config files from a template}
-  spec.description   = %q{Generate config files from a template}
-  spec.homepage      = "http://github.com/bmuller/configulator"
+  spec.description   = %q{Configurator allows you to maintain a single file with configuration values that can be used to generate other config files based on templates.}
+  spec.homepage      = "https://github.com/bmuller/configulator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'configulator'
+rescue LoadError
+  require 'rubygems'
+  require 'configulator'
+end
+
+if ARGV.length < 2
+  puts "Usage: configulator <master config file> <template file> [<environment>]"
+  exit 1
+end
+
+if ARGV[0].end_with? '.yml' or ARGV[0].end_with? '.yaml'
+  conf = Configulator.from_yaml_file(ARGV[0], ARGV[2])
+else
+  conf = Configulator.from_json_file(ARGV[0], ARGV[2])
+end
+
+puts conf.convert_file ARGV[1]

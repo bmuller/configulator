@@ -22,8 +22,8 @@ module Configulator
       end
     end
 
-    def convert_file(infile, outfile)
-      File.write outfile, ERB.new(File.read(infile)).result(@binding)
+    def convert_file(infile)
+      ERB.new(File.read(infile)).result(@binding)
     end
     
     def get(name)
