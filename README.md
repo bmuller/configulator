@@ -2,7 +2,7 @@
  
 Configurator allows you to maintain a single file with configuration values that can be used to generate other config files based on templates.
 
-For instance, if you need to generate all of the config files for a Hadoop cluster and the files vary in type (xml, json, yaml, etc) but all rely on the same few configuration options, you can use configulator to generate those files.
+For instance, if you need to generate all of the config files for a Hadoop cluster and the files vary in type (xml, json, yaml, etc) but all rely on the same few configuration values, you can use configulator to generate those files.
 
 Configulator is a tool that takes a single master input config file and some number of template files as input and then outputs the template files with the correct configuration values substituted. Additionally, there is a way of specifying default values, and then configulator will override on the necessary ones per environment.
 
