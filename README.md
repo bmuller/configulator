@@ -1,4 +1,6 @@
 # Configulator : Generate Config Files
+
+[![Build Status](https://travis-ci.org/bmuller/configulator.svg)](https://travis-ci.org/bmuller/configulator)
  
 Configurator allows you to maintain a single file with configuration values that can be used to generate other config files based on templates.
 
