@@ -8,8 +8,8 @@ class ConfigulatorTest < Test::Unit::TestCase
   def test_json_load_without_env
     input = {
       "one" => "something",
-      "two" => "<%= one %> one",
-      "three" => "<%= two %> two"
+      "two" => '= "#{one} one"',
+      "three" => '= "#{two} two"'
     }
     c = Configulator.from_json(JSON.dump(input))
     assert_equal c.one, "something"
@@ -21,11 +21,11 @@ class ConfigulatorTest < Test::Unit::TestCase
     input = {
       "default" => {
         "one" => "something",
-        "two" => "<%= one %> one",
-        "three" => "<%= two %> two"        
+        "two" => '= "#{one} one"',
+        "three" => '= "#{two} two"'
       },
       "test" => {
-        "three" => "<%= one %> as three",
+        "three" => '= "#{one} as three"',
         "newone" => 3
       }
     }
@@ -43,8 +43,8 @@ class ConfigulatorTest < Test::Unit::TestCase
   def test_yaml_load_without_env
     input = {
       "one" => "something",
-      "two" => "<%= one %> one",
-      "three" => "<%= two %> two"
+      "two" => '= "#{one} one"',
+      "three" => '= "#{two} two"'
     }
     c = Configulator.from_yaml(YAML.dump(input))
     assert_equal c.one, "something"
@@ -56,11 +56,11 @@ class ConfigulatorTest < Test::Unit::TestCase
     input = {
       "default" => {
         "one" => "something",
-        "two" => "<%= one %> one",
-        "three" => "<%= two %> two"        
+        "two" => '= "#{one} one"',
+        "three" => '= "#{two} two"'
       },
       "test" => {
-        "three" => "<%= one %> as three",
+        "three" => '= "#{one} as three"',
         "newone" => 3
       }
     }
