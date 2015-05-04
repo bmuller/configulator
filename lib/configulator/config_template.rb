@@ -35,7 +35,26 @@ module Configulator
     end
     
     private
+    def collapse(json, prefix=nil)
+      prefix ||= []
+      results = []
+      json.each do |key, value|
+        keys = prefix + [key]
+        if value.is_a?(Hash)
+          results += collapse(value, keys)
+        else
+          results << [keys.join('_'), value]
+        end
+      end
+      results
+    end
+
     def make_binding(env)
+      # first, collapse if there is a heirarchy
+      env = collapse(env).each_with_object({}) do |kv,h|
+        h[kv.first] = kv.last
+      end
+
       klass = ConfStruct.new *env.keys.map(&:intern)
       k = klass.new *env.values
       # support up to 5 levels of embedding

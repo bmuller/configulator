@@ -17,6 +17,18 @@ class ConfigulatorTest < Test::Unit::TestCase
     assert_equal c.three, "something one two"
   end
 
+  def test_json_with_hierarchy
+    input = {
+      "one" => "something",
+      "two" => { "three" => "four" },
+      "five" => { "six" => { "seven" => [1, 2] } }
+    }
+    c = Configulator.from_json(JSON.dump(input))
+    assert_equal c.one, "something"
+    assert_equal c.two_three, "four"
+    assert_equal c.five_six_seven, [1, 2]
+  end
+
   def test_json_load_with_env
     input = {
       "default" => {
