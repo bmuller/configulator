@@ -39,7 +39,7 @@ module Configulator
       prefix ||= []
       results = []
       json.each do |key, value|
-        keys = prefix + [key]
+        keys = prefix + [key.gsub('-', '_')]
         if value.is_a?(Hash)
           results += collapse(value, keys)
         else
